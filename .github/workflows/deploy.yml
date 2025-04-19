@@ -22,7 +22,7 @@ jobs:
         - name: Build react app
           run: CI=false npm run dist
           
-        - name: List files
+        - name: List files a
           run: ls -al && ls -al dist 
 
         # - name: AWS CREDENTIALS
