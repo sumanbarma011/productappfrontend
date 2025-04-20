@@ -23,7 +23,7 @@ jobs:
           run: CI=false npm run build
           
         - name: List files 
-          run: ls -al && ls -al build
+          run: ls -al && ls -al dist
 
         # - name: AWS CREDENTIALS
         #   uses: aws-actions/configure-aws-credentials@v4
