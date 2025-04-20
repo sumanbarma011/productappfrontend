@@ -16,14 +16,14 @@ jobs:
           with:
             node-version: 18
 
-        - name: Install dependencies
+        - name: Install dependencie
           run: npm install
 
         - name: Build react app
-          run: npm run dist
+          run: CI=false npm run build
           
         - name: List files 
-          run: ls -al && ls -al dist
+          run: ls -al && ls -al build
 
         # - name: AWS CREDENTIALS
         #   uses: aws-actions/configure-aws-credentials@v4
