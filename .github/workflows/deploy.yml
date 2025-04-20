@@ -25,7 +25,7 @@ jobs:
         - name: List files 
           run: ls -al && ls -al dist
 
-        - name: AWS CREDENTIALS
+        - name: AWS CREDENTIAL
           uses: aws-actions/configure-aws-credentials@v4
           with:
             aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
