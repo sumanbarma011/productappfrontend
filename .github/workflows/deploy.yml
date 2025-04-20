@@ -33,5 +33,5 @@ jobs:
             aws-region: us-east-1
 
         - name: deploy static website on s3
-          run: aws s3 sync build s3://productapplicationfrontend --delete
+          run: aws s3 sync dist s3://productapplicationfrontend --delete
           
