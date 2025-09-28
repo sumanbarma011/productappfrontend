@@ -8,16 +8,16 @@ pipeline {
         }
         stage ("create docker image") {
             steps {
-                sh "docker build -t productFrontend -f Dockerfiledev ."
+                sh "docker build -t productfrontend -f Dockerfiledev ."
             }
         }
         stage ("login to docker hub and push docker image") {
             steps {
                 
                 withCredentials ([usernamePassword(credentialsId: "dockerhub", usernameVariable: "user", passwordVariable: "password")]) {
-                    sh "docker tag productFrontend ${env.user}/productFrontend:dev"
+                    sh "docker tag productfrontend ${env.user}/productfrontend:dev"
                     sh "docker login -u ${env.user} -p ${env.password}"
-                    sh "docker push ${env.user}/productFrontend:dev"
+                    sh "docker push ${env.user}/productfrontend:dev"
                     
                 }
             }
