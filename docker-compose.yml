@@ -1,0 +1,15 @@
+version: "3.8"
+networks:
+  app_network:
+
+# Define the services that will run in your application
+services:
+  # Configuration for the frontend application
+  frontend:
+    image: frontend
+    container_name: frontend_app
+    build:
+      context: ./frontend
+    ports:
+      - "82:80"
+    network: app_network

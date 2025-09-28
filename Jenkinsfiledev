@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+    stages {
+        stage ("clone github") {
+            steps {
+                git branch:"dev",credentialsId:"github", url:"https://github.com/sumanbarma011/productappfrontend.git"
+            }
+        }
+        stage ("create docker image") {
+            steps {
+                sh "docker build -t productFrontend -f Dockerfiledev ."
+            }
+        }
+        stage ("login to docker hub and push docker image") {
+            steps {
+                
+                withCredentials ([usernamePassword(credentialsId: "dockerhub", usernameVariable: "user", passwordVariable: "password")]) {
+                    sh "docker tag productFrontend ${env.user}/productFrontend:dev"
+                    sh "docker login -u ${env.user} -p ${env.password}"
+                    sh "docker push ${env.user}/productFrontend:dev"
+                    
+                }
+            }
+        }
+        // stage ("ssh deployment") {
+        //     steps {
+        //         sshagent (["deployment"]) {
+        //             sh 'ssh -o StrictHostKeyChecking=no ubuntu@13.61.175.191 "cd /home/ubuntu/cv && docker-compose up -d"'
+        //         }
+                
+        //     }
+            
+        // }
+    }
+}
