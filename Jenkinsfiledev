@@ -11,7 +11,7 @@ pipeline {
                 sh "docker build -t productfrontend -f Dockerfiledev ."
             }
         }
-        stage ("login to docker hub and push docker images") {
+        stage ("login to docker hub and push docker image") {
             steps {
                 
                 withCredentials ([usernamePassword(credentialsId: "dockerhub", usernameVariable: "user", passwordVariable: "password")]) {
