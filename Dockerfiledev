@@ -14,6 +14,7 @@ RUN npm install typescript
 # Copy the entire application and build it
 COPY . .
 RUN npm run build
+RUN ls -al
 
 # Stage 2: Serve the built application using Nginx
 FROM nginx:alpine as PROD
